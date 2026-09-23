@@ -1,7 +1,7 @@
 
 import { useState } from "react";
 
-function SearchBar({ onLocationChange }) {
+function SearchBar({ onLocationChange, onLocationRequest }) {
   const [query, setQuery] = useState("");
   const [searching, setSearching] = useState(false);
   const [error, setError] = useState("");
@@ -75,6 +75,14 @@ function SearchBar({ onLocationChange }) {
           {searching ? "Searching..." : "Search"}
         </button>
       </form>
+
+      <button
+        type="button"
+        className="location-btn"
+        onClick={onLocationRequest}
+      >
+        Use my current location
+      </button>
 
       {error && <p className="search-error">{error}</p>}
     </div>
